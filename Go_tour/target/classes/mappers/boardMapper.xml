@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.edu.board">
+	
+	<insert id="boardRegister"  parameterType = "com.edu.board.dto.BoardDTO">
+		insert into t_board(board_bno, board_subject, userID, board_content,  board_regDate, board_readCount)
+		select  IFNULL(MAX(board_bno),0) +1 , #{board_subject}, #{userID}, #{board_content}, now(), 0
+		from t_board;
+	</insert>
+	
+	
+	
+</mapper>

@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.main-header{
+	margin: 35px 0 50px 0;
+}
+
+#reservation{
+	background-color: white;
+	border:2px solid #ccc;
+}
+
+#reservation_table{
+	border:2px solid black;
+}

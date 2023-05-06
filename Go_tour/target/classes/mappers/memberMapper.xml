@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.edu.member">
+	
+	<!-- 회원 가입 처리 -->
+	<insert id="addMember" parameterType="com.edu.member.dto.MemberDTO">
+		<![CDATA[
+			INSERT INTO t_member 
+					(userID, 	pwd,  address1, address2, postnum, name, age, phone, gender, email, joinDate, grade)
+			VALUES	(#{userID},	#{pwd}, #{address1}, #{address2}, #{postnum}, #{name}, #{age}, #{phone}, #{gender}, #{email}, sysdate(), 0)
+		]]>
+	</insert>
+	
+	<!-- 아이디 중복검사 -->
+	<select id = "idCheck" parameterType = "com.edu.member.dto.MemberDTO" resultType ="Integer">
+	<![CDATA[
+		select count(*)
+		from t_member
+		where userID = #{userID}
+	]]>
+	</select>
+	
+	<!-- 로그인 처리하기 -->
+	<select id="loginID" parameterType="com.edu.member.dto.MemberDTO" resultType="com.edu.member.dto.MemberDTO">
+		<![CDATA[
+			select * from t_member where userID=#{userID}
+		]]>
+	</select>
+	
+</mapper>

@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+/* css주석 다는법 */
+
+
+.navbar {
+	width: 100%;
+	font-family: 'Black Han Sans', sans-serif;
+}
+
+/* 로고 */
+#logo{ 
+  /* 위에 중앙 정렬하는방법 */
+  display: grid;
+  place-items: center;
+ 
+  margin: 18px auto;
+  width: 100%;
+  font-size: 50px;
+  font-family: 'Black Han Sans', sans-serif;
+}
+
+#logo2{
+	/* 위치조정을 하려면 position: relative를 입력해야한다 */
+	position: relative;
+	top: 10px;
+	text-decoration-line: none;
+	color: black;
+}
+
+/* 메뉴 */
+
+/* 네이브바 목록 가운데 정렬*/
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+}
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+
+.dropdown{
+	 margin: 0 45px;	
+}
+
+.dropdown-toggle{
+	font-size: 22px;
+}
+
+.dropdown-menu{
+	height: 40px;
+	font-size: 18px;
+	text-align: left;
+}
+
