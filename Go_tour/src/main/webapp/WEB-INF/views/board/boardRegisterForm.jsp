@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판등록</title>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -19,7 +19,31 @@
 	
 	<div class="container">
 		<h2>문의하기</h2>
-		<form>			
+		<form>	
+			<div>
+				<label for="problem_type1">문의유형</label>
+				<select id="problem_type1" name="problem_type1" onchange="categoryChange(this)">
+					<option value="option0">선택</option>
+					<option value="option1">예약문의</option>
+					<option value="option2">결제문의</option>
+					<option value="option3">취소문의</option>
+					<option value="option4">기타문의</option>
+				</select>
+				<select id="problem_type2" name="problem_type2">
+					<option value="option0">선택</option>
+				</select>
+			</div>
+			<div>
+				<label for="region">지역</label>
+				<select id="region" name="region">
+					<option value="option0">선택</option>
+					<option value="option1">유럽</option>
+					<option value="option2">일본</option>
+					<option value="option3">중국</option>
+					<option value="option4">동남아</option>
+					<option value="option5">국내</option>
+				</select>
+			</div>	
 			<div>
 			<input type="hidden" id="userID" name="userID" value="${member.userID}"/>
 				<label for="board_subject">제목</label>

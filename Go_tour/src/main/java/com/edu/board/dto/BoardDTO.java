@@ -9,8 +9,10 @@ public class BoardDTO {
 	private String userID;				// 사용자 아이디
 	private String board_content;		// 게시글 내용
 	private Timestamp board_regDate;	// 게시글 작성일자
-	private int board_readCount;		// 게시글 조회수
-	
+	private String problem_type1; 		// 문의유형1
+	private String problem_type2; 		// 문의유형2
+	private String region; 				// 지역
+	private String process_status;		// 처리 진행과정	
 	public int getBoard_bno() {
 		return board_bno;
 	}
@@ -41,19 +43,37 @@ public class BoardDTO {
 	public void setBoard_regDate(Timestamp board_regDate) {
 		this.board_regDate = board_regDate;
 	}
-	public int getBoard_readCount() {
-		return board_readCount;
+	public String getProblem_type1() {
+		return problem_type1;
 	}
-	public void setBoard_readCount(int board_readCount) {
-		this.board_readCount = board_readCount;
+	public void setProblem_type1(String problem_type1) {
+		this.problem_type1 = problem_type1;
+	}
+	public String getProblem_type2() {
+		return problem_type2;
+	}
+	public void setProblem_type2(String problem_type2) {
+		this.problem_type2 = problem_type2;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getProcess_status() {
+		return process_status;
+	}
+	public void setProcess_status(String process_status) {
+		this.process_status = process_status;
 	}
 	@Override
 	public String toString() {
 		return "BoardDTO [board_bno=" + board_bno + ", board_subject=" + board_subject + ", userID=" + userID
-				+ ", board_content=" + board_content + ", board_regDate=" + board_regDate + ", board_readCount="
-				+ board_readCount + "]";
+				+ ", board_content=" + board_content + ", board_regDate=" + board_regDate + ", problem_type1="
+				+ problem_type1 + ", problem_type2=" + problem_type2 + ", region=" + region + ", process_status="
+				+ process_status + "]";
 	}
+		
 	
-	
-
 }// end- public class BoardDTO

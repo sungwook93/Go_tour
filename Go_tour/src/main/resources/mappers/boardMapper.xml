@@ -5,11 +5,46 @@
 
 <mapper namespace="com.edu.board">
 	
+	<!-- 게시글 작성하기 -->
 	<insert id="boardRegister"  parameterType = "com.edu.board.dto.BoardDTO">
-		insert into t_board(board_bno, board_subject, userID, board_content,  board_regDate, board_readCount)
-		select  IFNULL(MAX(board_bno),0) +1 , #{board_subject}, #{userID}, #{board_content}, now(), 0
+		insert into t_board(board_bno, board_subject, userID, board_content,  board_regDate, problem_type1, problem_type2, region, process_status)
+		select  IFNULL(MAX(board_bno),0) +1 , #{board_subject}, #{userID}, #{board_content}, now(), #{problem_type1}, #{problem_type2}, #{region}, "N"  
 		from t_board;
 	</insert>
+	
+	<!-- 검색 조건 -->
+	<sql id="searchMySQL">
+		<if test="searchType != null">
+			<if test="searchType == 's'.toString()">
+				and board_subject LIKE concat('%', #{keyword},'%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and board_content LIKE concat('%', #{keyword},'%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and userID LIKE concat('%', #{keyword},'%')
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 게시글 목록 가져오기 -->
+	<select id="boardList" parameterType = "com.edu.common.util.SearchCriteria" resultType="com.edu.board.dto.BoardDTO">
+		select *
+		from (
+		select board_bno, board_subject, board_content, userID, board_regDate, problem_type1, problem_type2, region, process_status , ROW_NUMBER() OVER(order by board_bno DESC) as rNum
+		from t_board where 1=1
+		<include refid="searchMySQL"/>
+		) brd
+		where rNum between (#{perPageNum} * #{page} - 9) and (#{perPageNum} * #{page})
+		order by board_bno desc
+	</select>
+	
+	<!-- 게시글 총 갯수를 가져온다. -->
+	<select id ="boardListTotalCount" parameterType = "com.edu.common.util.SearchCriteria" resultType="Integer">
+		select count(*)
+		from t_board where 1=1
+		<include refid="searchMySQL"/>
+	</select>
 	
 	
 	

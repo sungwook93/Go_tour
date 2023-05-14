@@ -1,5 +1,7 @@
 package com.edu.board.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.board.dto.BoardDTO;
 import com.edu.board.service.BoardService;
+import com.edu.common.util.PageMaker;
 import com.edu.common.util.SearchCriteria;
 
 @Controller 
@@ -30,8 +33,26 @@ public class BoardController {
 		System.out.println("boardList controller 시작");
 		
 		ModelAndView mav = new ModelAndView();
-		
 		mav.setViewName("/board/boardList");
+		
+		//페이징과 검색관련된 게시글을 리스트에 담는다.
+		List<BoardDTO> boardList = boardService.boardList(sCri);
+		//리스트를 모델에 담는다.
+		mav.addObject("boardList", boardList);
+		
+		//페이지를 넘길때 값을 입력해야하기때문에 넘겨준다.
+		mav.addObject("searchType", sCri.getSearchType());
+		mav.addObject("keyword", sCri.getKeyword());
+		
+		// 페이징 처리를위해 만든다.
+		PageMaker pageMaker = new PageMaker();
+		//페이지 처리를위해 값을 넘겨준다.
+		pageMaker.setCri(sCri);
+		
+		pageMaker.setTotalCount(boardService.boardListTotalCount(sCri));
+		
+		mav.addObject("pageMaker", pageMaker);
+		
 		
 		return mav;
 	}//end - 게시글 목록 보여주기

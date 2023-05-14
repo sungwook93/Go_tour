@@ -1,5 +1,7 @@
 package com.edu.board.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.edu.board.dto.BoardDTO;
+import com.edu.common.util.SearchCriteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -27,4 +30,20 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
+	// 게시글 리스트 가져오기
+	@Override
+	public List<BoardDTO> boardList(SearchCriteria sCri) throws Exception {
+		System.out.println("BoardDAOImpl에서 게시글 리스트 가져오기");
+		return sqlSession.selectList(Namespace + ".boardList", sCri);
+	}
+	
+	// 게시글 총 수를 가져온다.
+	@Override
+	public int boardListTotalCount(SearchCriteria sCri) throws Exception {
+		System.out.println("BoardDAOImpl에서 게시글 총 수를 가져온다.");
+		return sqlSession.selectOne(Namespace + ".boardListTotalCount", sCri);
+	}
+
+	
+	
 }

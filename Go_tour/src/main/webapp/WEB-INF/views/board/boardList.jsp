@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판</title>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -18,7 +18,7 @@
 			<script src="${contextPath}/resources/js/board.js"></script>
 </head>
 <body>
-
+	<!-- s -->
 	<!-- 상단 메뉴 -->
 	<jsp:include page="../common/topMenu.jsp" flush="false"/>
 	
@@ -40,7 +40,7 @@
 				<select id="searchType" class="form-control" >
 					<option value="s" <c:if test="${searchType == 's' }">selected</c:if>>제목</option>
 					<option value="c" <c:if test="${searchType == 'c' }">selected</c:if>>내용</option>
-					<option value="u" <c:if test="${searchType == 'u' }">selected</c:if>>글쓴이</option>
+					<option value="u" <c:if test="${searchType == 'u' }">selected</c:if>>지역</option>
 				</select>
 			</div>
 			<div>
@@ -54,23 +54,33 @@
 			<table id="boardTable">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>내용</th>
-						<th>작성자</th>
-						<th>작성일자</th>
-						<th>조회수</th>
+						<th id="problem_type">유형</th>
+						<th id="region">지역</th>
+						<th id="board_subject">제목</th>
+						<th id="process_status">처리상태</th>
+						<th id="board_regDate">등록일</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>가</td>
-						<td>d</td>
-						<td>d</td>
-						<td>d</td>
-						<td>d</td>
-						<td>d</td>
-					</tr>
+					<c:forEach var="board" items="${boardList }">
+						<tr>
+							<td>${board.problem_type1} > ${board.problem_type2}</td>
+							<td>${board.region}</td>
+							<td style="text-align:left; padding-left:15px;">${board.board_subject}</td>
+							<td>
+							<c:choose>
+								<c:when test="${board.process_status == 'N' }">
+								<div id="process_status1">접수</div>
+								</c:when>
+								<c:otherwise>
+								<div id="process_status2"><span class="check-icon">&#10003;</span>답변완료</div>
+								</c:otherwise>
+							</c:choose>
+							
+							</td>
+							<td><fmt:formatDate value="${board.board_regDate}" pattern="yyyy-MM-dd"/></td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			<!-- 페이징 처리 -->

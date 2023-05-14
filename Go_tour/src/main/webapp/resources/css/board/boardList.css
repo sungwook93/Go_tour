@@ -53,12 +53,16 @@ h3{
  	border-bottom : 1px solid #ccc;
  	height: 50px;
  	text-align: center;
+ 	font-size: 14px;
+ 	font-weight: bold;
  }
  
  #boardTable td{
  	text-align: center;
  	height: 65px;
  	border-bottom : 1px solid #ccc;
+ 	font-size: 14px;
+ 	font-weight: bold;
  }
 
  #pageMaker{
@@ -91,5 +95,39 @@ h3{
 	font-size:15px;
 }
 
- 
+/* 게시글 넓이 이것저것 꾸미기 */
+#problem_type {
+	width: 20%;
+}
+
+#region{
+	width: 10%;
+}
+
+#board_subject{
+	width: 50%;
+}
+#process_status{
+	width: 10%
+}
+
+#board_regDate{
+	width: 10%;
+}
+
+/* process_status 부분*/
+#process_status1{
+	color: rgba(0, 0, 0, 0.6);
+	
+}
+
+#process_status2{
+	color: rgba(255, 0, 0, 0.7);
+}
+
+.check-icon {
+  font-size: 1.2em;
+  margin-right: 10px;
+  color: rgba(255, 0, 0, 0.7);
+}
  
