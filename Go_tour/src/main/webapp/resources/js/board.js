@@ -2,7 +2,7 @@
  * 게시글 관련 함수
  */
  
-
+// 게시글 등록
 function fn_boardRegister(){
 	//alert("확인");
 
@@ -67,6 +67,7 @@ function fn_boardRegister(){
 
 }// end - function fn_boardRegister()
 
+// 게시글 등록 옵션
 function categoryChange(e){
   let problem_type2_a = ["선택"];
   let problem_type2_b = ["선택", "해외여행", "국내여행"];
@@ -91,6 +92,27 @@ function categoryChange(e){
     target.appendChild(opt);
   }
 }
+
+// 검색 버튼을 눌렀을 경우( jquery)
+$(document).ready(function() {
+			
+	var formObj = $("#formList");
+	
+	// 검색 버튼을 눌렀을 경우
+	$("#searchBtn").click(function() {
+		var typeStr		= $("#searchType").find(":selected").val();
+		var keywordStr	= $("#searchKeyword").val();
+		//alert(typeStr + ":" + keywordStr);
+		
+		// 서버로 전송하기 전에, name 속성에 값을 넣어준다.
+		formObj.find("[name='searchType']").val(typeStr);
+		formObj.find("[name='keyword']").val(keywordStr);
+		formObj.find("[name='page']").val("1");
+		formObj.submit();
+	});
+	
+});
+
 
 
  

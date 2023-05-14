@@ -57,7 +57,7 @@ public class BoardController {
 		return mav;
 	}//end - 게시글 목록 보여주기
 	
-	// 게시글 쓰기 화면불러오기123
+	// 게시글 쓰기 화면불러오기
 	@RequestMapping(value="/boardRegisterForm", method=RequestMethod.GET)
 	public String boardRegisterForm() throws Exception{
 		

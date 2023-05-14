@@ -21,8 +21,8 @@
 			<if test="searchType == 'c'.toString()">
 				and board_content LIKE concat('%', #{keyword},'%')
 			</if>
-			<if test="searchType == 'c'.toString()">
-				and userID LIKE concat('%', #{keyword},'%')
+			<if test="searchType == 'r'.toString()">
+				and region LIKE concat('%', #{keyword},'%')
 			</if>
 		</if>
 	</sql>

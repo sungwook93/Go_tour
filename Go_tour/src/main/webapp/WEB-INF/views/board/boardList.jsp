@@ -18,7 +18,6 @@
 			<script src="${contextPath}/resources/js/board.js"></script>
 </head>
 <body>
-	<!-- s -->
 	<!-- 상단 메뉴 -->
 	<jsp:include page="../common/topMenu.jsp" flush="false"/>
 	
@@ -40,7 +39,7 @@
 				<select id="searchType" class="form-control" >
 					<option value="s" <c:if test="${searchType == 's' }">selected</c:if>>제목</option>
 					<option value="c" <c:if test="${searchType == 'c' }">selected</c:if>>내용</option>
-					<option value="u" <c:if test="${searchType == 'u' }">selected</c:if>>지역</option>
+					<option value="r" <c:if test="${searchType == 'r' }">selected</c:if>>지역</option>
 				</select>
 			</div>
 			<div>
