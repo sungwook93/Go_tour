@@ -46,6 +46,12 @@
 		<include refid="searchMySQL"/>
 	</select>
 	
+	<!-- 게시글 번호에 해당하는 BoardDTO를 가져와서 model에 담는다. -->
+	<select id = "boardDetail" parameterType = "Integer" resultType = "com.edu.board.dto.BoardDTO">
+		select *
+		from t_board where board_bno = #{board_bno}
+	</select>
+	
 	
 	
 </mapper>

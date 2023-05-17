@@ -87,4 +87,24 @@ public class BoardController {
 	}// end -  게시글 등록하기
 	
 	
+	//게시글 상세 조회 + 댓글 + 대댓글
+	@RequestMapping(value="/boardDetail", method = RequestMethod.GET)
+	public ModelAndView boardDetail(int board_bno)throws Exception{
+		
+		System.out.println("boardController boardDetail board_bno" + board_bno);
+						
+		ModelAndView mav = new ModelAndView();
+		//jsp주소 입력
+		mav.setViewName("/board/boardDetail");
+		
+		//게시글 번호에 해당하는 BoardDTO를 가져와서 model에 담는다.
+		mav.addObject("boardDTO" ,boardService.boardDetail(board_bno));
+		
+		
+		return mav;
+	}// end - 게시글 상세 조회 + 댓글 + 대댓글
+	
+	
+	
+	
 }

@@ -16,6 +16,9 @@ public interface BoardDAO {
 
 	// 게시글 총수 가져오기
 	public int boardListTotalCount(SearchCriteria sCri)throws Exception;
+
+	//게시글 번호에 해당하는 BoardDTO를 가져와서 model에 담는다.
+	public BoardDTO boardDetail(int board_bno)throws Exception;
 	
 	
 	

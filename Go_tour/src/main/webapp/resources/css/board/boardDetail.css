@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+h2{
+	font-family: 'Black Han Sans', sans-serif;
+	text-align: center;
+	margin-bottom: 50px;
+	font-size:38px;
+}
+
+h4{
+	font-size:16px;
+	font-weight: 600;
+}
+
+table{
+	width: 100%;
+}
+td{
+	white-space: nowrap; !important
+}
+
+#board_subject{
+	height:50px;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+#board_regDate{
+	font-size: 15.6px;
+	text-align:right;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.6);
+	padding-bottom: 17px;
+	border-bottom: 1px solid black;
+}
+
+/* process_status 부분*/
+#process_status1{
+	color: rgba(0, 0, 0, 0.6);	
+}
+
+#process_status2{
+	color: rgba(255, 0, 0, 0.7);
+}

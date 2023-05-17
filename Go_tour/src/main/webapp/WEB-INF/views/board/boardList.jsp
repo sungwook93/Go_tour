@@ -65,7 +65,14 @@
 						<tr>
 							<td>${board.problem_type1} > ${board.problem_type2}</td>
 							<td>${board.region}</td>
-							<td style="text-align:left; padding-left:15px;">${board.board_subject}</td>
+							<td style="text-align:left; padding-left:15px;">
+								<a href="/board/boardDetail?board_bno=${board.board_bno}" style="text-decoration: none;">
+									<c:choose>
+		                                <c:when test="${board.board_subject.length() > 10}">${board.board_subject.substring(0, 11)} ⋯</c:when>
+		                                <c:otherwise>${board.board_subject}</c:otherwise>
+	                                </c:choose>
+								</a>
+							</td>
 							<td>
 							<c:choose>
 								<c:when test="${board.process_status == 'N' }">

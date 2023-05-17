@@ -44,6 +44,13 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne(Namespace + ".boardListTotalCount", sCri);
 	}
 
+	//게시글 번호에 해당하는 BoardDTO를 가져와서 model에 담는다.
+	@Override
+	public BoardDTO boardDetail(int board_bno) throws Exception {
+		System.out.println("BoardDAOImpl에서 게시글 번호에 해당하는 BoardDTO를 가져와서 model에 담는다.");
+		return sqlSession.selectOne(Namespace + ".boardDetail", board_bno);
+	}
+
 	
 	
 }
